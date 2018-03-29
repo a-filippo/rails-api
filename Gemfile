@@ -5,11 +5,12 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# Use postgresql as the database for Active Record
+gem 'pg' #, '~> 0.18'
+gem 'active_model_serializers'
+gem 'activerecord-reset-pk-sequence'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -24,12 +25,6 @@ gem 'puma', '~> 3.7'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
-
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-end
-
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
@@ -39,3 +34,29 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+group :development, :test do
+  # Call ' byebug'  anywhere in the code to stop execution
+  gem 'byebug', platform: :mri
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'guard'
+  gem 'guard-bundler', require: false
+  gem 'guard-rspec', require: false
+  gem 'rspec-rails', '~> 3.5'  # ,  :github => ' rspec/rspec-rails'
+  gem 'rails-controller-testing'
+  # Checks ruby code grammar
+  gem 'rubocop', require: false
+  # With rspec
+  gem 'rubocop-rspec'
+  # With guard
+  gem 'guard-rubocop'
+end
+group :test do
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'database_cleaner'
+end
+group :coverage do
+  gem 'simplecov', :require => false
+end

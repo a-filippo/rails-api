@@ -20,3 +20,6 @@
 !/tmp/.keep
 
 .byebug_history
+
+# Ignore encrypted secrets key file.
+config/secrets.yml.key
